@@ -38,29 +38,29 @@ $rejectedCount = $statusCounts['rejected'] ?? 0;
 $totalCount = $pendingCount + $approvedCount + $rejectedCount;
 ?>
 
-<h1 class="mb-4"><?php echo $localization->t('manage_users'); ?></h1>
+<h1 class="mb-4"><i class="fas fa-users-cog me-2"></i><?php echo $localization->t('manage_users'); ?></h1>
 
 <div class="card mb-4">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
                 <a class="nav-link <?php echo $status === 'all' ? 'active' : ''; ?>" href="<?php echo url('admin/users'); ?>">
-                    <?php echo $localization->t('all'); ?> <span class="badge bg-secondary"><?php echo $totalCount; ?></span>
+                    <i class="fas fa-users me-1"></i> <?php echo $localization->t('all'); ?> <span class="badge bg-secondary"><?php echo $totalCount; ?></span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?php echo $status === 'pending' ? 'active' : ''; ?>" href="<?php echo url('admin/users?status=pending'); ?>">
-                    <?php echo $localization->t('pending'); ?> <span class="badge bg-warning"><?php echo $pendingCount; ?></span>
+                    <i class="fas fa-user-clock me-1"></i> <?php echo $localization->t('pending'); ?> <span class="badge bg-warning"><?php echo $pendingCount; ?></span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?php echo $status === 'approved' ? 'active' : ''; ?>" href="<?php echo url('admin/users?status=approved'); ?>">
-                    <?php echo $localization->t('approved'); ?> <span class="badge bg-success"><?php echo $approvedCount; ?></span>
+                    <i class="fas fa-user-check me-1"></i> <?php echo $localization->t('approved'); ?> <span class="badge bg-success"><?php echo $approvedCount; ?></span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?php echo $status === 'rejected' ? 'active' : ''; ?>" href="<?php echo url('admin/users?status=rejected'); ?>">
-                    <?php echo $localization->t('rejected'); ?> <span class="badge bg-danger"><?php echo $rejectedCount; ?></span>
+                    <i class="fas fa-user-times me-1"></i> <?php echo $localization->t('rejected'); ?> <span class="badge bg-danger"><?php echo $rejectedCount; ?></span>
                 </a>
             </li>
         </ul>

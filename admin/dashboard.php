@@ -30,7 +30,7 @@ $db->query("SELECT b.*, c.name as category_name FROM books b
 $recentBooks = $db->resultSet();
 ?>
 
-<h1 class="mb-4"><?php echo $localization->t('admin_dashboard'); ?></h1>
+<h1 class="mb-4"><i class="fas fa-tachometer-alt me-2"></i><?php echo $localization->t('admin_dashboard'); ?></h1>
 
 <div class="row dashboard-stats mb-4">
     <div class="col-md-4">
@@ -88,7 +88,7 @@ $recentBooks = $db->resultSet();
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0"><?php echo $localization->t('recent_users'); ?></h5>
                 <a href="<?php echo url('admin/users'); ?>" class="btn btn-sm btn-primary">
-                    <?php echo $localization->t('view_all'); ?>
+                    <i class="fas fa-eye me-1"></i> <?php echo $localization->t('view_all'); ?>
                 </a>
             </div>
             <div class="card-body">
@@ -137,7 +137,7 @@ $recentBooks = $db->resultSet();
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0"><?php echo $localization->t('recent_books'); ?></h5>
                 <a href="<?php echo url('admin/books'); ?>" class="btn btn-sm btn-primary">
-                    <?php echo $localization->t('view_all'); ?>
+                    <i class="fas fa-eye me-1"></i> <?php echo $localization->t('view_all'); ?>
                 </a>
             </div>
             <div class="card-body">

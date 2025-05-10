@@ -8,7 +8,7 @@ include __DIR__ . '/layout/header.php';
 <div class="auth-form">
     <h2 class="form-title"><?php echo $localization->t('register_title'); ?></h2>
 
-    <form action="<?php echo $baseUrl; ?>register" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+    <form action="<?php echo url('register'); ?>" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
         <div class="mb-3">
             <label for="full_name" class="form-label"><?php echo $localization->t('full_name'); ?></label>
             <input type="text" class="form-control" id="full_name" name="full_name" required>
@@ -55,7 +55,7 @@ include __DIR__ . '/layout/header.php';
     </form>
 
     <div class="mt-3 text-center">
-        <p><?php echo $localization->t('already_have_account'); ?> <a href="<?php echo $baseUrl; ?>login"><?php echo $localization->t('login'); ?></a></p>
+        <p><?php echo $localization->t('already_have_account'); ?> <a href="<?php echo url('login'); ?>"><?php echo $localization->t('login'); ?></a></p>
     </div>
 </div>
 

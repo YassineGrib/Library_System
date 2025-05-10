@@ -54,11 +54,11 @@ $books = $db->resultSet();
                 <?php echo $localization->t('categories'); ?>
             </div>
             <div class="list-group list-group-flush">
-                <a href="<?php echo $baseUrl; ?>books" class="list-group-item list-group-item-action <?php echo $categoryId === 0 ? 'active' : ''; ?>">
+                <a href="<?php echo url('books'); ?>" class="list-group-item list-group-item-action <?php echo $categoryId === 0 ? 'active' : ''; ?>">
                     <?php echo $localization->t('all_categories'); ?>
                 </a>
                 <?php foreach ($categories as $category): ?>
-                <a href="<?php echo $baseUrl; ?>books?category=<?php echo $category['id']; ?>" class="list-group-item list-group-item-action <?php echo $categoryId === (int)$category['id'] ? 'active' : ''; ?>">
+                <a href="<?php echo url('books?category=' . $category['id']); ?>" class="list-group-item list-group-item-action <?php echo $categoryId === (int)$category['id'] ? 'active' : ''; ?>">
                     <?php echo htmlspecialchars($category['name']); ?>
                 </a>
                 <?php endforeach; ?>
@@ -71,7 +71,7 @@ $books = $db->resultSet();
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0"><?php echo $localization->t('books'); ?></h5>
 
-                <form action="<?php echo $baseUrl; ?>books" method="get" class="d-flex" id="search-form">
+                <form action="<?php echo url('books'); ?>" method="get" class="d-flex" id="search-form">
                     <?php if ($categoryId > 0): ?>
                     <input type="hidden" name="category" value="<?php echo $categoryId; ?>">
                     <?php endif; ?>
@@ -108,11 +108,11 @@ $books = $db->resultSet();
                                         <i class="fas fa-folder me-1"></i> <?php echo htmlspecialchars($book['category_name']); ?>
                                     </small>
                                 </p>
-                                <a href="<?php echo $baseUrl; ?>books/view/<?php echo $book['id']; ?>" class="btn btn-sm btn-primary">
+                                <a href="<?php echo url('books/view/' . $book['id']); ?>" class="btn btn-sm btn-primary">
                                     <i class="fas fa-eye me-1"></i> <?php echo $localization->t('view'); ?>
                                 </a>
                                 <?php if ($auth->isLoggedIn()): ?>
-                                <a href="<?php echo $baseUrl; ?>uploads/books/<?php echo $book['file_path']; ?>" class="btn btn-sm btn-success" download>
+                                <a href="<?php echo url('uploads/books/' . $book['file_path']); ?>" class="btn btn-sm btn-success" download>
                                     <i class="fas fa-download me-1"></i> <?php echo $localization->t('download'); ?>
                                 </a>
                                 <?php endif; ?>

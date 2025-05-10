@@ -51,33 +51,33 @@ if (!isset($auth)) {
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo url(); ?>">
-                            <?php echo $localization->t('home'); ?>
+                            <i class="fas fa-home me-1"></i> <?php echo $localization->t('home'); ?>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo url('books'); ?>">
-                            <?php echo $localization->t('books'); ?>
+                            <i class="fas fa-book me-1"></i> <?php echo $localization->t('books'); ?>
                         </a>
                     </li>
                     <?php if ($auth->isAdmin()): ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?php echo $localization->t('admin'); ?>
+                            <i class="fas fa-user-shield me-1"></i> <?php echo $localization->t('admin'); ?>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="adminDropdown">
                             <li>
                                 <a class="dropdown-item" href="<?php echo url('admin'); ?>">
-                                    <?php echo $localization->t('dashboard'); ?>
+                                    <i class="fas fa-tachometer-alt me-1"></i> <?php echo $localization->t('dashboard'); ?>
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="<?php echo url('admin/users'); ?>">
-                                    <?php echo $localization->t('manage_users'); ?>
+                                    <i class="fas fa-users-cog me-1"></i> <?php echo $localization->t('manage_users'); ?>
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="<?php echo url('admin/books'); ?>">
-                                    <?php echo $localization->t('manage_books'); ?>
+                                    <i class="fas fa-book-open me-1"></i> <?php echo $localization->t('manage_books'); ?>
                                 </a>
                             </li>
                         </ul>
@@ -89,7 +89,7 @@ if (!isset($auth)) {
                     <!-- Language Switcher -->
                     <li class="nav-item dropdown language-switcher">
                         <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?php echo $localization->t('language'); ?>
+                            <i class="fas fa-globe me-1"></i> <?php echo $localization->t('language'); ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown" id="language-switcher">
                             <li>
@@ -114,18 +114,18 @@ if (!isset($auth)) {
                     <!-- User Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?php echo $auth->getUser()['full_name']; ?>
+                            <i class="fas fa-user-circle me-1"></i> <?php echo $auth->getUser()['full_name']; ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                             <li>
                                 <a class="dropdown-item" href="<?php echo url('profile'); ?>">
-                                    <?php echo $localization->t('profile'); ?>
+                                    <i class="fas fa-id-card me-1"></i> <?php echo $localization->t('profile'); ?>
                                 </a>
                             </li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <a class="dropdown-item" href="<?php echo url('logout'); ?>">
-                                    <?php echo $localization->t('logout'); ?>
+                                    <i class="fas fa-sign-out-alt me-1"></i> <?php echo $localization->t('logout'); ?>
                                 </a>
                             </li>
                         </ul>
@@ -134,12 +134,12 @@ if (!isset($auth)) {
                     <!-- Login/Register -->
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo url('login'); ?>">
-                            <?php echo $localization->t('login'); ?>
+                            <i class="fas fa-sign-in-alt me-1"></i> <?php echo $localization->t('login'); ?>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo url('register'); ?>">
-                            <?php echo $localization->t('register'); ?>
+                            <i class="fas fa-user-plus me-1"></i> <?php echo $localization->t('register'); ?>
                         </a>
                     </li>
                     <?php endif; ?>

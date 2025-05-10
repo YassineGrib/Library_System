@@ -33,9 +33,15 @@ return [
     'uploaded_by' => 'Uploaded By',
     'profile_info' => 'Profile Information',
     'member_since' => 'Member Since',
+    'subscription_end' => 'Subscription Ends',
+    'upload_limit' => 'Upload Limit',
+    'remaining_uploads' => 'Remaining Uploads',
+    'subscription_expired' => 'Your subscription has expired',
+    'subscription_active' => 'Your subscription is active',
     'my_books' => 'My Books',
     'account_pending_books' => 'Your account is pending approval. You will be able to upload books once approved.',
     'no_books_uploaded' => 'You haven\'t uploaded any books yet.',
+    'upload_limit_reached' => 'You have reached your upload limit',
     'book_not_found' => 'Book not found',
     'page_not_found' => 'The page you are looking for does not exist.',
     'go_home' => 'Go to Homepage',
@@ -93,6 +99,7 @@ return [
     'error_404' => 'Page Not Found',
     'error_403' => 'Access Denied',
     'error_500' => 'Server Error',
+    'permission_denied' => 'Permission Denied',
     'go_back' => 'Go Back',
 
     // Buttons
@@ -110,5 +117,6 @@ return [
     'password_min' => 'Password must be at least 6 characters',
     'password_match' => 'Passwords do not match',
     'file_type' => 'Invalid file type',
-    'file_size' => 'File size exceeds limit'
+    'file_size' => 'File size exceeds limit',
+    'select_category' => 'Select Category'
 ];

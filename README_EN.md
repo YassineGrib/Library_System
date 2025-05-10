@@ -114,6 +114,45 @@ private $defaultLanguage = 'en'; // ar, en, fr
 
 Modify the `public/assets/css/app.css` file to customize the general appearance of the application.
 
+## Routing System
+
+The application uses a simple routing system that maps URLs to specific controllers and actions:
+
+1. All requests are redirected to `index.php` through `.htaccess`
+2. The `index.php` file parses the URL and determines which controller and action to execute
+3. The appropriate view is then loaded and displayed to the user
+
+## Database Schema
+
+The system uses the following main tables:
+
+- `users`: Stores user information and authentication details
+- `books`: Stores book information including title, author, and file path
+- `categories`: Stores book categories
+- `downloads`: Tracks user downloads
+
+## API Endpoints
+
+The system provides the following API endpoints for integration with other systems:
+
+- `GET /api/books`: Returns a list of all books
+- `GET /api/books/{id}`: Returns details for a specific book
+- `GET /api/categories`: Returns a list of all categories
+
+## Troubleshooting
+
+### Common Issues
+
+1. **404 Errors**: Make sure your .htaccess file is properly configured
+2. **Database Connection Errors**: Check your database credentials in the config file
+3. **Upload Issues**: Ensure the upload directories have proper write permissions
+
+### Logging
+
+The system logs errors and important events to:
+- `logs/error.log`: For PHP errors
+- `logs/app.log`: For application-specific logs
+
 ## License
 
 This project is licensed under the MIT License.

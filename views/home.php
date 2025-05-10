@@ -16,7 +16,7 @@ $latestBooks = $db->resultSet();
     <h1 class="display-4"><?php echo $localization->t('welcome'); ?></h1>
     <p class="lead"><?php echo $localization->t('home_description'); ?></p>
 
-    <form action="<?php echo $baseUrl; ?>books" method="get" class="mt-4" id="search-form">
+    <form action="<?php echo url('books'); ?>" method="get" class="mt-4" id="search-form">
         <div class="input-group mb-3">
             <input type="text" class="form-control form-control-lg" placeholder="<?php echo $localization->t('search_placeholder'); ?>" name="search" id="search-input">
             <button class="btn btn-primary" type="submit">
@@ -55,11 +55,11 @@ $latestBooks = $db->resultSet();
                                     <i class="fas fa-folder me-1"></i> <?php echo htmlspecialchars($book['category_name']); ?>
                                 </small>
                             </p>
-                            <a href="<?php echo $baseUrl; ?>books/view/<?php echo $book['id']; ?>" class="btn btn-sm btn-primary">
+                            <a href="<?php echo url('books/view/' . $book['id']); ?>" class="btn btn-sm btn-primary">
                                 <i class="fas fa-eye me-1"></i> <?php echo $localization->t('view'); ?>
                             </a>
                             <?php if ($auth->isLoggedIn()): ?>
-                                <a href="<?php echo $baseUrl; ?>uploads/books/<?php echo $book['file_path']; ?>" class="btn btn-sm btn-success" download>
+                                <a href="<?php echo url('uploads/books/' . $book['file_path']); ?>" class="btn btn-sm btn-success" download>
                                     <i class="fas fa-download me-1"></i> <?php echo $localization->t('download'); ?>
                                 </a>
                             <?php endif; ?>
@@ -77,7 +77,7 @@ $latestBooks = $db->resultSet();
     </div>
 
     <div class="text-center mt-4">
-        <a href="<?php echo $baseUrl; ?>books" class="btn btn-outline-primary">
+        <a href="<?php echo url('books'); ?>" class="btn btn-outline-primary">
             <?php echo $localization->t('view_all_books'); ?>
         </a>
     </div>

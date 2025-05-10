@@ -108,11 +108,11 @@ $db->query("SELECT b.*, c.name as category_name, u.full_name as uploader_name
 $books = $db->resultSet();
 ?>
 
-<h1 class="mb-4"><?php echo $localization->t('manage_books'); ?></h1>
+<h1 class="mb-4"><i class="fas fa-book-open me-2"></i><?php echo $localization->t('manage_books'); ?></h1>
 
 <div class="card mb-4">
     <div class="card-header">
-        <h5 class="mb-0"><?php echo $localization->t('add_book'); ?></h5>
+        <h5 class="mb-0"><i class="fas fa-plus-circle me-1"></i> <?php echo $localization->t('add_book'); ?></h5>
     </div>
     <div class="card-body">
         <form action="<?php echo url('admin/books'); ?>" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
@@ -167,7 +167,7 @@ $books = $db->resultSet();
 
 <div class="card">
     <div class="card-header">
-        <h5 class="mb-0"><?php echo $localization->t('books_list'); ?></h5>
+        <h5 class="mb-0"><i class="fas fa-list me-1"></i> <?php echo $localization->t('books_list'); ?></h5>
     </div>
     <div class="card-body">
         <?php if (empty($books)): ?>
