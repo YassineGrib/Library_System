@@ -1,0 +1,199 @@
+/**
+ * Custom styles for Digital Library
+ */
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
+    padding: 1rem 0;
+    background-color: #343a40;
+    color: #fff;
+}
+
+/* RTL Support */
+body[dir="rtl"] .dropdown-menu {
+    text-align: right;
+}
+
+body[dir="rtl"] .ms-auto {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+}
+
+body[dir="rtl"] .me-auto {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+/* Language Switcher */
+.language-switcher .dropdown-item {
+    display: flex;
+    align-items: center;
+}
+
+.language-switcher .dropdown-item img {
+    margin-right: 8px;
+    width: 20px;
+    height: 15px;
+}
+
+body[dir="rtl"] .language-switcher .dropdown-item img {
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+/* Book Cards */
+.book-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.book-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    background-color: #e9ecef;
+}
+
+.book-card .card-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.book-card .card-text {
+    color: #6c757d;
+}
+
+/* Login & Register Forms */
+.auth-form {
+    max-width: 450px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.auth-form .form-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #343a40;
+}
+
+.auth-form .form-control {
+    padding: 0.75rem;
+}
+
+.auth-form .btn-primary {
+    padding: 0.75rem;
+    font-weight: 600;
+}
+
+/* Admin Dashboard */
+.dashboard-stats .card {
+    border-left: 4px solid;
+    border-radius: 0.25rem;
+    transition: transform 0.3s ease;
+}
+
+.dashboard-stats .card:hover {
+    transform: translateY(-5px);
+}
+
+.dashboard-stats .card-body {
+    padding: 1.25rem;
+}
+
+.dashboard-stats .card-title {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #6c757d;
+}
+
+.dashboard-stats .card-text {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.dashboard-stats .card-icon {
+    font-size: 2rem;
+    opacity: 0.3;
+}
+
+.dashboard-stats .card-users {
+    border-left-color: #4e73df;
+}
+
+.dashboard-stats .card-books {
+    border-left-color: #1cc88a;
+}
+
+.dashboard-stats .card-pending {
+    border-left-color: #f6c23e;
+}
+
+/* File Upload */
+.custom-file-upload {
+    display: block;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border: 2px dashed #ced4da;
+    border-radius: 0.25rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.custom-file-upload:hover {
+    background-color: #e9ecef;
+}
+
+.custom-file-upload i {
+    font-size: 2rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+
+/* Alerts */
+.alert-dismissible {
+    padding-right: 3rem;
+}
+
+/* Pagination */
+.pagination .page-item.active .page-link {
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+.pagination .page-link {
+    color: #343a40;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .auth-form {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .dashboard-stats .card {
+        margin-bottom: 1rem;
+    }
+}

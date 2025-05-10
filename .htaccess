@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteBase /Library_System/
+
+# Allow direct access to assets and uploads
+RewriteRule ^public/assets/ - [L]
+RewriteRule ^public/uploads/ - [L]
+
+# Allow direct access to setup.php
+RewriteRule ^setup\.php$ - [L]
+
+# Redirect all requests to index.php except for existing files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [L,QSA]
