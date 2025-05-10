@@ -369,7 +369,13 @@ switch ($uri) {
         if (preg_match('#^/books/view/(\d+)$#', $uri, $matches)) {
             $id = $matches[1];
             include __DIR__ . '/views/book_view.php';
-        } else {
+        }
+        // Check if it's a book read page
+        else if (preg_match('#^/books/read/(\d+)$#', $uri, $matches)) {
+            $id = $matches[1];
+            include __DIR__ . '/views/book_read.php';
+        }
+        else {
             // 404 page
             header("HTTP/1.0 404 Not Found");
             include __DIR__ . '/views/404.php';

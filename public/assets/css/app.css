@@ -58,6 +58,8 @@ body[dir="rtl"] .language-switcher .dropdown-item img {
 .book-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
+    overflow: hidden;
+    border-radius: 12px;
 }
 
 .book-card:hover {
@@ -68,16 +70,102 @@ body[dir="rtl"] .language-switcher .dropdown-item img {
 .book-card .card-img-top {
     height: 200px;
     object-fit: cover;
-    background-color: #e9ecef;
 }
 
 .book-card .card-title {
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: #343a40;
 }
 
 .book-card .card-text {
     color: #6c757d;
+}
+
+/* Book Cover Styling */
+.book-cover-container {
+    perspective: 1000px;
+    width: 120px;
+    height: 160px;
+}
+
+.book-cover {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(-30deg);
+    transition: transform 0.5s ease;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(45deg, #4e73df, #224abe);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-cover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    border-radius: 2px;
+}
+
+.book-cover i {
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.book-card:hover .book-cover {
+    transform: rotateY(-15deg);
+}
+
+/* Category Badge */
+.category-badge .badge {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styling */
+.book-card .btn {
+    transition: all 0.3s ease;
+    border: none;
+    font-weight: 500;
+}
+
+.book-card .btn-primary {
+    background-color: #4e73df;
+}
+
+.book-card .btn-info {
+    background-color: #36b9cc;
+}
+
+.book-card .btn-success {
+    background-color: #1cc88a;
+}
+
+.book-card .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Footer */
+.book-card .card-footer {
+    border-top: none;
+    background-color: transparent;
+    color: #858796;
+}
+
+/* Transition for hover effects */
+.transition-hover {
+    transition: all 0.3s ease;
 }
 
 /* Login & Register Forms */
@@ -192,7 +280,7 @@ body[dir="rtl"] .language-switcher .dropdown-item img {
         margin: 1rem;
         padding: 1.5rem;
     }
-    
+
     .dashboard-stats .card {
         margin-bottom: 1rem;
     }

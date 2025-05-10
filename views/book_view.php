@@ -39,12 +39,17 @@ if (!$book) {
                         </div>
 
                         <?php if ($auth->isLoggedIn()): ?>
-                        <a href="<?php echo url('uploads/books/' . $book['file_path']); ?>" class="btn btn-success w-100 mb-2" download>
-                            <i class="fas fa-download me-1"></i> <?php echo $localization->t('download'); ?>
-                        </a>
+                        <div class="d-grid gap-2 mb-3">
+                            <a href="<?php echo url('books/read/' . $book['id']); ?>" class="btn btn-primary mb-2">
+                                <i class="fas fa-book-reader me-1"></i> <?php echo $localization->t('read_online'); ?>
+                            </a>
+                            <a href="<?php echo url('public/uploads/books/' . $book['file_path']); ?>" class="btn btn-success" download>
+                                <i class="fas fa-download me-1"></i> <?php echo $localization->t('download'); ?>
+                            </a>
+                        </div>
                         <?php else: ?>
                         <div class="alert alert-info">
-                            <?php echo $localization->t('login_to_download'); ?>
+                            <?php echo $localization->t('login_to_access'); ?>
                             <a href="<?php echo url('login'); ?>" class="alert-link"><?php echo $localization->t('login'); ?></a>
                         </div>
                         <?php endif; ?>
