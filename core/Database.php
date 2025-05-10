@@ -7,27 +7,51 @@ class Database {
     private static $instance = null;
     private $pdo;
     private $stmt;
-    
+
     /**
      * Constructor - connects to the database
      */
     private function __construct() {
+        // Check if setup_complete.php exists
+        if (!file_exists(__DIR__ . '/../config/setup_complete.php')) {
+            header('Location: /Library_System/setup/');
+            exit;
+        }
+
         $config = require_once __DIR__ . '/../config/xampp.php';
-        $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'] . ';charset=utf8mb4';
-        
-        $options = [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false
-        ];
-        
+
         try {
+            // First try to connect without specifying the database
+            $dsn = 'mysql:host=' . $config['db']['host'] . ';charset=utf8mb4';
+            $options = [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false
+            ];
+
+            $tempPdo = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $options);
+
+            // Check if database exists
+            $stmt = $tempPdo->query("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '{$config['db']['name']}'");
+            $dbExists = $stmt->fetch();
+
+            if (!$dbExists) {
+                // Database doesn't exist, redirect to setup
+                header('Location: /Library_System/setup/');
+                exit;
+            }
+
+            // Database exists, connect to it
+            $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'] . ';charset=utf8mb4';
             $this->pdo = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $options);
+
         } catch (PDOException $e) {
-            throw new Exception("Database connection failed: " . $e->getMessage());
+            // Any connection error should redirect to setup
+            header('Location: /Library_System/setup/');
+            exit;
         }
     }
-    
+
     /**
      * Get singleton instance
      */
@@ -37,7 +61,7 @@ class Database {
         }
         return self::$instance;
     }
-    
+
     /**
      * Prepare statement with query
      */
@@ -45,7 +69,7 @@ class Database {
         $this->stmt = $this->pdo->prepare($sql);
         return $this;
     }
-    
+
     /**
      * Bind values to prepared statement
      */
@@ -65,18 +89,18 @@ class Database {
                     $type = PDO::PARAM_STR;
             }
         }
-        
+
         $this->stmt->bindValue($param, $value, $type);
         return $this;
     }
-    
+
     /**
      * Execute the prepared statement
      */
     public function execute() {
         return $this->stmt->execute();
     }
-    
+
     /**
      * Get result set as array of objects
      */
@@ -84,7 +108,7 @@ class Database {
         $this->execute();
         return $this->stmt->fetchAll();
     }
-    
+
     /**
      * Get single record as object
      */
@@ -92,35 +116,35 @@ class Database {
         $this->execute();
         return $this->stmt->fetch();
     }
-    
+
     /**
      * Get row count
      */
     public function rowCount() {
         return $this->stmt->rowCount();
     }
-    
+
     /**
      * Get last inserted ID
      */
     public function lastInsertId() {
         return $this->pdo->lastInsertId();
     }
-    
+
     /**
      * Begin a transaction
      */
     public function beginTransaction() {
         return $this->pdo->beginTransaction();
     }
-    
+
     /**
      * Commit a transaction
      */
     public function commit() {
         return $this->pdo->commit();
     }
-    
+
     /**
      * Rollback a transaction
      */

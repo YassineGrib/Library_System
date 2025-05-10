@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /Library_System/setup/
+
+# Allow direct access to assets
+RewriteRule ^assets/ - [L]
+
+# Redirect all requests to index.php except for existing files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [L,QSA]

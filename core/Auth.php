@@ -43,7 +43,12 @@ class Auth {
 
         if ($user) {
             // Remove sensitive data
-            unset($user['password_hash']);
+            if (isset($user['password_hash'])) {
+                unset($user['password_hash']);
+            }
+            if (isset($user['password'])) {
+                unset($user['password']);
+            }
             $this->user = $user;
         }
     }
@@ -66,13 +71,13 @@ class Auth {
 
         // Hash password
         $config = require_once __DIR__ . '/../config/xampp.php';
-        $passwordHash = password_hash($password, $config['security']['password_algo']);
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
         // Insert new user
-        $this->db->query("INSERT INTO users (email, password_hash, full_name, receipt_path, status)
-                          VALUES (:email, :password_hash, :full_name, :receipt_path, 'pending')");
+        $this->db->query("INSERT INTO users (email, password, full_name, receipt_path, status)
+                          VALUES (:email, :password, :full_name, :receipt_path, 'pending')");
         $this->db->bind(':email', $email);
-        $this->db->bind(':password_hash', $passwordHash);
+        $this->db->bind(':password', $passwordHash);
         $this->db->bind(':full_name', $fullName);
         $this->db->bind(':receipt_path', $receiptPath);
 
@@ -105,8 +110,10 @@ class Auth {
             ];
         }
 
-        // Verify password
-        if (password_verify($password, $user['password_hash'])) {
+        // Verify password - check both password_hash and password fields for compatibility
+        if ((isset($user['password_hash']) && password_verify($password, $user['password_hash'])) ||
+            (isset($user['password']) && password_verify($password, $user['password']))) {
+
             // Check if user is approved
             if ($user['status'] !== 'approved') {
                 return [

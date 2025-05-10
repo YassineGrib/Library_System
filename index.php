@@ -9,6 +9,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Setup check is now handled in Database.php
+
 // Load core classes
 require_once __DIR__ . '/core/Database.php';
 require_once __DIR__ . '/core/Auth.php';
@@ -24,6 +26,27 @@ $localization = Localization::getInstance();
 // Check for language change
 if (isset($_GET['lang']) && in_array($_GET['lang'], $localization->getSupportedLanguages())) {
     $localization->setLanguage($_GET['lang']);
+
+    // Get the current URL without the lang parameter
+    $currentUrl = $_SERVER['REQUEST_URI'];
+    $urlParts = parse_url($currentUrl);
+
+    if (isset($urlParts['query'])) {
+        parse_str($urlParts['query'], $queryParams);
+        unset($queryParams['lang']);
+
+        // Rebuild URL without lang parameter
+        $newUrl = $urlParts['path'];
+        if (!empty($queryParams)) {
+            $newUrl .= '?' . http_build_query($queryParams);
+        }
+    } else {
+        $newUrl = $urlParts['path'];
+    }
+
+    // Redirect to the same page without the lang parameter
+    header('Location: ' . $newUrl);
+    exit;
 }
 
 // Use the current_path() function from helpers.php
